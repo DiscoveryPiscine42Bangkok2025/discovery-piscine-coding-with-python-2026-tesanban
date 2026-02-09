@@ -1,4 +1,4 @@
-for n in range(1, 11):
+for n in range(0, 11):
     i = 0
     result = ""
     while i <= 10:
