@@ -1,6 +1,10 @@
+#!/usr/bin/python3
 import sys
-NewMessage = sys.argv[0]
-if(NewMessage == ""):
+try:
+    if sys.argv[1]:
+        print(sys.argv[1])
+except:
     print("none")
-else:
-    print(NewMessage)
+
+#./aff_first_param.py
+#./aff_first_param.py "Code Ninja" "Numerique" "42" | cat -e
