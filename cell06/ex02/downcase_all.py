@@ -9,4 +9,6 @@ if len(sys.argv) > 1:
 else:
         print("none")
 # ./downcase_all.py
-#./downcase_all.py "HELLO WORLD" "I understood Arrays well!"
+#git add .
+git commit -m "Force update solution"
+git push -f origin main
