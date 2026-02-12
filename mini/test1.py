@@ -1,11 +1,5 @@
 from checkmate import *
-board = """\
-R...
-.K..
-..P.
-....\
-"""
-
+from main import *
 check = True
 
 rows = board.strip().splitlines()
@@ -16,16 +10,13 @@ array = [list(row) for row in rows]
 for row in array:
     print(row)
 
-
-
-
-for y in range(0,len(array)):
+    for y in range(0,len(array)):
         for x in range(0,len(array[y])):
             if k_count > 1:
                 check = False
                 print("The King have only one!!")
-                if check == False:
-                    break
+            if check == False:
+                break
 
             if array[y][x] == "Q":
                 if check_queen_attack(array, y, x):
@@ -37,9 +28,11 @@ for y in range(0,len(array)):
             elif array[y][x] == "R":
                 if check_Rook_attack(array, y, x):
                     check = True
-                if check_Pawn_attack(array, y, x):
+            if(array[y][x] == "P"): # เบี้ย
+                if(array[y-1][x-1] == "K"):
                     check = True
-    
+                elif(array[y-1][x+1] == "K"):
+                    check = True    
             elif array[y][x] == "." or "K":
                 if array[y][x] == "K":
                     k_count += 1
@@ -47,18 +40,14 @@ for y in range(0,len(array)):
             else:
                 check = False
                 print("Error")
-        if k_count == 0:
-            check = False
-        print("Where ur King!!")
+    if k_count == 0:
+        check = False
+        print("ราชาของแกอยุ่ที่ไหนไปเรียกเค้ามา!!!")
 
-        if check == True:
-            print("Success")
-else:
+    if check == True:
+        print("Success")
+    else:
         check == False
         print("Fail")
-
-
-
-                    
 
 
