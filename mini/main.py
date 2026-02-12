@@ -3,64 +3,68 @@ board = """\
 R...
 .K..
 ..P.
-...K\
+....\
 """
 
-check = True
-
 rows = board.strip().splitlines()
-k_count = 0
-    
-
 array = [list(row) for row in rows]
+checkboardY = len(array)
+k_count = 0           
+found_attack = False  
+board_valid = True 
+
 for row in array:
     print(row)
-
-
-
-
-for y in range(0,len(array)):
-        for x in range(0,len(array[y])):
-            if k_count > 1:
-                check = False
-                print("The King Should be one!!")
-                if check == False:
-                    break
-
-            if array[y][x] == "Q":
-                if check_queen_attack(array, y, x):
-                    check = True
-
-            elif array[y][x] == "B":
-                if check_Bishop_attack(array, y, x):
-                    check = True
-            elif array[y][x] == "R":
-                if check_Rook_attack(array, y, x):
-                    check = True
-            elif array[y][x] == "P" :
-                if check_Pawn_attack(array, y, x):
-                    check = True
-            elif array[y][x] == "." or "K":
-                if array[y][x] == "K":
-                    k_count += 1
-                
-            else:
-                check = False
-                print("Error")
-        if k_count == 0:
-            check = False
-            print("Where ur King!!")
-        if k_count == 1:
-            check = False
-
-        if check == True:
-            print("Success")
+if checkboardY == 0:
+    board_valid = False
 else:
-        check == False
-        print("Fail")
+    for row in array:
+        if len(row) != checkboardY:
+            board_valid = False
+            print("Error: Board is not a square!")
+            break 
+
+for y in range(len(array)):
+    for x in range(len(array[y])):
+            
+        piece = array[y][x]
+
+        
+        if piece == "Q":
+            if check_queen_attack(array, y, x):
+                found_attack = True
+        
+        elif piece == "B":
+            if check_Bishop_attack(array, y, x):
+                found_attack = True
+                
+        elif piece == "R":
+            if check_Rook_attack(array, y, x):
+                found_attack = True
+                
+        elif piece == "P":
+             if check_Pawn_attack(array, y, x):
+                 found_attack = True
+
+        
+        elif piece in [".", "K"]:
+            if piece == "K":
+                k_count += 1
+        
+        else:
+            board_valid = False
 
 
+if k_count != 1:
+    board_valid = False
+    print(f"THE King should Be One!")
 
-                    
 
-
+if board_valid:
+    if found_attack:
+        print("Success") 
+    else:
+        print("Fail")    
+else:
+    
+    print("Fail") #king have 2 what ???
