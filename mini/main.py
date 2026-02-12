@@ -2,7 +2,7 @@ from checkmate import *
 board = """\
 R...
 .K..
-..P.
+..Q.
 ....\
 """
 
