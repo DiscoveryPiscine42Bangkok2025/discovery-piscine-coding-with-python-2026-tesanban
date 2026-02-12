@@ -3,7 +3,7 @@ board = """\
 R...
 .K..
 ..P.
-....\
+...K\
 """
 
 check = True
@@ -23,7 +23,7 @@ for y in range(0,len(array)):
         for x in range(0,len(array[y])):
             if k_count > 1:
                 check = False
-                print("The King have only one!!")
+                print("The King Should be one!!")
                 if check == False:
                     break
 
@@ -40,17 +40,18 @@ for y in range(0,len(array)):
             elif array[y][x] == "P" :
                 if check_Pawn_attack(array, y, x):
                     check = True
-    
             elif array[y][x] == "." or "K":
                 if array[y][x] == "K":
                     k_count += 1
-                continue
+                
             else:
                 check = False
                 print("Error")
         if k_count == 0:
             check = False
             print("Where ur King!!")
+        if k_count == 1:
+            check = False
 
         if check == True:
             print("Success")
