@@ -37,6 +37,7 @@ for y in range(0,len(array)):
             elif array[y][x] == "R":
                 if check_Rook_attack(array, y, x):
                     check = True
+            elif array[y][x] == "P" :
                 if check_Pawn_attack(array, y, x):
                     check = True
     
@@ -49,7 +50,7 @@ for y in range(0,len(array)):
                 print("Error")
         if k_count == 0:
             check = False
-        print("Where ur King!!")
+            print("Where ur King!!")
 
         if check == True:
             print("Success")
