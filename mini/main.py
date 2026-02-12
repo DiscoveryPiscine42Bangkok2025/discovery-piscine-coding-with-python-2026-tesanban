@@ -1,9 +1,9 @@
 from checkmate import *
 board = """\
-R...
-.K..
-..Q.
-....\
+B.....
+.R...
+..K..
+.....\
 """
 
 rows = board.strip().splitlines()
@@ -21,7 +21,7 @@ else:
     for row in array:
         if len(row) != checkboardY:
             board_valid = False
-            print("Error: Board is not a square!")
+            print("Error: Not square!")
             break 
 
 for y in range(len(array)):

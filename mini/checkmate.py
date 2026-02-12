@@ -35,7 +35,7 @@ def check_Rook_attack(board, start_y, start_x): # Rook
         while True:
             curr_y += dy
             curr_x += dx
-            if not (0 <= curr_y < rows and 0 <= curr_x < cols):
+            if not (0 <= curr_y < rows and 0 <= curr_x < len(board[curr_y])):
                 break
             target = board[curr_y][curr_x]
             
